@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { HeaderLoginComponent } from './header-login/header-login.component';
 import { BodyLoginComponent } from './body-login/body-login.component';
 import { FooterLoginComponent } from './footer-login/footer-login.component';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -22,9 +23,9 @@ import { FooterLoginComponent } from './footer-login/footer-login.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpModule
+    HttpModule,
   ],
-  providers: [UsersService],
+  providers: [UsersService, CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

